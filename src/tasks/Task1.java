@@ -3,8 +3,6 @@ package tasks;
 public class Task1 {
 
     public static int[] solve(int[][] data) {
-        // TODO Auto-generated method stub
-
         int maxStock = 0, maxBuy = 0, maxSell = 0, maxPrice = 0;
 
         for (int stock = 0; stock < data.length; ++stock)
