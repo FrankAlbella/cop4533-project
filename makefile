@@ -1,18 +1,22 @@
-JFLAGS	:= -g -d $(OBJ_DIR)
-JC		:= javac
-BUILD	:= .
+JC	:= javac
+JAR	:= jar
+JARFLAGS:= -cvfm
+BUILD	:= $(PWD)
 OBJ_DIR	:= $(BUILD)/obj
 APP_DIR	:= $(BUILD)
 TARGET	:= $(BUILD)/Stocks
-.SUFFIXES: .java .class
-.java.class:
-        $(JC) $(JFLAGS) $*.java
+SRC_DIR	:= $(BUILD)/src
+MANIFEST:= $(BUILD)/manifest.mf
+SRC	:= $(wildcard $(SRC_DIR)/tasks/*.java) \
+		$(wildcard $(SRC_DIR)/*.java) 
+JFLAGS	:= -g -d $(OBJ_DIR)
 
-CLASSES = $(wildcard src/*.java) $(wildcard src/tasks*.java)
+default: build
 
-default: classes
-
-classes: $(CLASSES:.java=.class)
+build:
+	$(JC) $(JFLAGS) $(SRC)	
+	cd $(OBJ_DIR); $(JAR) $(JARFLAGS) $(TARGET) $(MANIFEST) .
+	chmod +x $(TARGET)
 
 clean:
-        $(RM) *.class
+	$(RM) $(OBJ_DIR)/*
