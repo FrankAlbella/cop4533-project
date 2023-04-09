@@ -11,6 +11,7 @@ class Main {
         if(args.length != 1) {
             System.out.println("Unexpected number of args. Expected task.");
             System.out.println("usage: Stocks task");
+	    return;
         }
 
         // only check the first char because task 3 has a and b
