@@ -24,7 +24,6 @@ public class Task5 {
 
         }
         temp.add(M[start][data[0].length-1]);
-        maxProfitWindow(start, k-1, data, M);
     }
 
     public static int[][] solve(int[][] data, int numTransactions) {
